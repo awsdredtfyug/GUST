@@ -1,20 +1,6 @@
 <div align="center">
 
-# GUST, by [Nautilus Labs](https://github.com/nautilus-os)
-
-![version](https://img.shields.io/badge/version-2.0-blue?style=flat-square)
-![license](https://img.shields.io/badge/license-AGPLv3-green?style=flat-square)
-![no service workers](https://img.shields.io/badge/service%20workers-absolutely%20not-red?style=flat-square)
-![totally working svg](https://img.shields.io/badge/svg%20functionality-gorgeous%20and%20beautiful-blue?style=flat-square)
-
-</div>
-
----
-
-## Links
-
-- https://cdn.jsdelivr.net/gh/nautilus-os/GUST@latest/svg/site.svg
-- https://gust-browser.vercel.app
+# GUST,
 
 ---
 ## What is this?

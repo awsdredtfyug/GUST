@@ -37,15 +37,14 @@
         /* Icon spacing: log message icons get a small right gap */
         .log-msg i[class*="fa-"] { margin-right: 4px; }
 
-        html,
-        body {
-            height: 100%;
-            background: var(--bg0);
-            color: var(--tx);
-            font-family: var(--ui);
-            overflow: hidden
-        }
-
+       html,
+body {
+    height: 100%;
+    background: var(--bg0) url('path/to/44f9321910496637ba53a1691300e193.gif') center / cover no-repeat;
+    color: var(--tx);
+    font-family: var(--ui);
+    overflow: hidden;
+}
         button,
         input,
         select {

@@ -159,6 +159,6 @@ Put it inside another HTML file as an `<iframe>`. Works from a Blob URL. Works f
 
 <div align="center">
 
-Made with ❤️ by Nautilus Labs
+Made with ❤️ love
 
 </div>

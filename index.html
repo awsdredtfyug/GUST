@@ -6080,9 +6080,18 @@ body {
 
                     
                     <div id="gustCredit"
-                        style="position:absolute; bottom:20px; right:24px; z-index:10; color:rgba(255,255,255,1); font-size:18px; font-weight:600; font-family:var(--ui); display:flex; align-items:center; gap:5px; pointer-events:none; user-select:none; text-shadow:0 1px 4px rgba(0,0,0,0.6); letter-spacing:0.02em;">
-                        Made with <i class="fas fa-heart" style="color:#ff6b8a; font-size:15px;"></i> made with love
+    style="position:absolute; bottom:20px; right:24px; z-index:10; color:rgba(255,255,255,1); font-family:var(--ui); text-align:right;">
 
+    <div id="memberCount"
+        style="font-size:14px; font-weight:600; margin-bottom:6px; opacity:.9;">
+        <i class="fas fa-users"></i> <span id="memberNumber">Loading...</span> Members
+    </div>
+
+    <div style="font-size:18px; font-weight:600;">
+        Made with <i class="fas fa-heart" style="color:#ff6b8a; font-size:15px;"></i> made with love
+    </div>
+
+</div>
                     </div>
 
                     <div class="nt-content">
@@ -28665,6 +28674,32 @@ _VIEWER_DL_JS +
             </div>
         </div>
     </div>
+<script>
+async function updateMemberCount() {
+    const memberNumber = document.getElementById("memberNumber");
+
+    try {
+        const response = await fetch(
+            "https://discord.com/api/v10/invites/HMQ8yaRQ6X?with_counts=true"
+        );
+
+        const data = await response.json();
+
+        if (data.approximate_member_count !== undefined) {
+            memberNumber.textContent =
+                data.approximate_member_count.toLocaleString();
+        } else {
+            memberNumber.textContent = "Unknown";
+        }
+    } catch (error) {
+        console.error(error);
+        memberNumber.textContent = "Unknown";
+    }
+}
+
+updateMemberCount();
+setInterval(updateMemberCount, 5 * 60 * 1000);
+</script>
 
 </body>
 

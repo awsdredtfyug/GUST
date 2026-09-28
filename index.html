@@ -28675,32 +28675,6 @@ _VIEWER_DL_JS +
         </div>
     </div>
 <script>
-async function updateMemberCount() {
-    const memberNumber = document.getElementById("memberNumber");
-
-    try {
-        const response = await fetch(
-            "https://discord.com/api/v10/invites/HMQ8yaRQ6X?with_counts=true"
-        );
-
-        const data = await response.json();
-
-        if (data.approximate_member_count !== undefined) {
-            memberNumber.textContent =
-                data.approximate_member_count.toLocaleString();
-        } else {
-            memberNumber.textContent = "Unknown";
-        }
-    } catch (error) {
-        console.error(error);
-        memberNumber.textContent = "Unknown";
-    }
-}
-
-updateMemberCount();
-setInterval(updateMemberCount, 5 * 60 * 1000);
-</script>
-
 </body>
 
 </html>

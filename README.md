@@ -1,6 +1,6 @@
 <div align="center">
 
-# GUST,
+# GUST, LOCKED
 
 ---
 ## What is this?

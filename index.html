@@ -8856,32 +8856,7 @@ function openEmojiPicker(cb){
     if(b.dataset.e) emojiCb(b.dataset.e); else emojiCb('<:'+b.dataset.ce+'>'); });
   search.focus();
 }
-document.addEventListener('click',e=>{ if(!e.target.closest('#emojipick')&&!e.target.closest('#emoji-btn')&&!e.target.closest('[data-act=react]')) $('#emojipick').style.display='none'; });
-
-/* ============ members ============ */
-$('#btn-members').onclick=()=>{ const m=$('#members'); m.classList.toggle('hidden'); $('#btn-members').classList.toggle('on',!m.classList.contains('hidden')); if(!m.classList.contains('hidden')) renderMembers(); };
-function renderMembers(){
-  const box=$('#members'); if(box.classList.contains('hidden')) return;
-  if(G.activeGuild==='@me'){ box.innerHTML='<div class="empty" style="font-size:13px">DMs have no member list.</div>'; return; }
-  const rows=G.memberList.get(G.activeGuild);
-  box.innerHTML='';
-  if(!rows){ box.innerHTML='<div class="empty" style="font-size:13px">Loading members…</div>'; requestMemberList(G.activeGuild); return; }
-  for(const r of rows){
-    if(r.group){ const cnt=r.group.count!=null?' — '+r.group.count:'';
-      const g=G.guilds.get(G.activeGuild); const role=(g?.roles||[]).find(x=>x.id===r.group.id);
-      const label=r.group.id==='online'?'Online':r.group.id==='offline'?'Offline':(role?.name||'Members');
-      const hdr=el('div','mrole',esc(label)+cnt);
-      if(role&&role.color) hdr.style.color='#'+role.color.toString(16).padStart(6,'0');
-      box.appendChild(hdr); }
-    else if(r.member){ const m=r.member,u=m.user; const st=G.presences.get(u.id)||(m.presence?.status)||'offline';
-      const row=el('div','member'+(st!=='offline'?' on':''));
-      row.style.setProperty('--glow', roleHex(u.id,G.activeGuild)||STATUS_HEX[st]||'transparent');
-      row.innerHTML=`<div class="avwrap">${imgTag(avatarUrl(u),'av',initials(u.username))}<span class="dot ${st}"></span></div><span class="nm" style="${authorColor(u.id,G.activeGuild)}">${esc(m.nick||u.global_name||u.username)}</span>`;
-      row.onclick=()=>showProfile(u.id); box.appendChild(row);
-    }
-  }
-}
-
+document.addEventListener('click',e=>{ if(!e.target.closest('#emojipick')&&!e.target.closest('#emoji-btn')&&!e.target.closest('[data-act=react]')) $('#emojipick').style.display='none'; });z
 /* ============ modals ============ */
 function modal(html){
   const root=$('#modal-root'); root.innerHTML=`<div class="modal"><div class="box">${html}</div></div>`;
@@ -28673,94 +28648,6 @@ _VIEWER_DL_JS +
                 </div>
             </div>
         </div>
-    </div>
-    <meta name="author" content="HypeStudy" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#f8f6f1" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="rating" content="General" />
-    <meta name="distribution" content="global" />
-    <meta name="copyright" content="HypeStudy" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="HypeStudy — Secure Study Platform for Students"
-    />
-    <meta
-      property="og:description"
-      content="Secure, animated, and modern study platform. Master your subjects with interactive flashcards, dynamic quizzes, comprehensive analytics, and powerful study tools."
-    />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="HypeStudy" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://hypestudy.com/" />
-    <meta name="twitter:site" content="@hypestudy" />
-    <meta name="twitter:creator" content="@hypestudy" />
-    <meta
-      name="twitter:title"
-      content="HypeStudy — Secure Study Platform for Students"
-    />
-    <meta
-      name="twitter:description"
-      content="Secure, animated, and modern study platform. Interactive flashcards, quizzes, analytics, and everything you need to excel in your studies."
-    />
-    <meta name="twitter:image" content="/logo.png" />
-    <meta
-      name="twitter:image:alt"
-      content="HypeStudy Logo - Secure Study Platform"
-    />
-    <meta name="application-name" content="HypeStudy" />
-    <meta name="apple-mobile-web-app-title" content="HypeStudy" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-TileColor" content="#f8f6f1" />
-    <meta name="msapplication-config" content="/browserconfig.xml" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHE360M0YP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-SHE360M0YP", { send_page_view: true, transport_type: "beacon" });
-    </script>
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WPH7NCG4");
-    </script>
-    <style>
-    </style>
-  </head>
-  <body>
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-WPH7NCG4"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <div id="root"></div>
 </script>
 
 </body>

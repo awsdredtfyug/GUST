@@ -21355,7 +21355,261 @@ _VIEWER_DL_JS +
                 if (e.key === "Enter") ntSearchBtn.click();
             };
             const ntGithubBtn = $("ntGithubBtn");
-            if (ntGithubBtn) ntGithubBtn.onclick = () => window.open("https://kicks-shop.com/", "_blank", "noopener,noreferrer");
+            if (ntGithubBtn) ntGithubBtn.onclick = () => window.open("<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> canvas</title>
+  <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  overflow: hidden;
+
+  /* BACKGROUND */
+  background:
+    linear-gradient(rgba(5, 15, 30, 0.55), rgba(0, 5, 15, 0.65)),
+    url(https://cdn.pixabay.com/animation/2025/02/20/20/10/20-10-19-416_512.gif) center/cover no-repeat;
+}
+
+/* Blur/darken background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20px;
+  z-index: -2;
+
+  background:
+    linear-gradient(rgba(5, 15, 30, 0.45), rgba(0, 5, 15, 0.6)),
+    url(https://cdn.pixabay.com/animation/2025/02/20/20/10/20-10-19-416_512.gif) center/cover no-repeat;
+
+  filter: blur(5px);
+  transform: scale(1.05);
+}
+
+/* Rain glass layer */
+#rain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Keep your website above the rain */
+h1,
+.search-bar,
+.shortcuts {
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-shadow: 0 2px 10px #000;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: rgba(10, 15, 25, 0.75);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus {
+  border-color: #555;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+button {
+  padding: 14px 22px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(20, 25, 35, 0.8);
+  backdrop-filter: blur(10px);
+  color: #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(40, 45, 55, 0.9);
+}
+
+.shortcuts {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  padding: 0 16px;
+}
+
+.shortcut {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(15, 20, 30, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.shortcut:hover {
+  background: rgba(40, 45, 55, 0.85);
+  color: #fff;
+}
+</style>
+</head>
+<body>
+
+<canvas id="rain"></canvas>
+  <h1> GUST 💖</h1>
+
+  <div class="search-bar">
+    <input
+      id="url-input"
+      type="text"
+      placeholder="Enter a URL or search query..."
+      autofocus
+    />
+    <button onclick="navigate()">click</button>
+  </div>
+
+  <div class="shortcuts">
+    <a class="shortcut" href="/proxy/https/duckduckgo.com">DuckDuckGo</a>
+    <a class="shortcut" href="/proxy/https/wikipedia.org">Wikipedia</a>
+    <a class="shortcut" href="/proxy/https/genizymath.github.io/">Genizymath!!</a>
+    <a class="shortcut" href="/proxy">placeholder</a>
+    <a class="shortcut" href="/proxy">placeholder</a>
+  </div>
+<script>
+const canvas = document.getElementById("rain");
+const ctx = canvas.getContext("2d");
+
+let drops = [];
+
+function resizeRain() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  drops = [];
+
+  for (let i = 0; i < 140; i++) {
+    drops.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 7 + 2,
+      speed: Math.random() * 0.8 + 0.2,
+      opacity: Math.random() * 0.35 + 0.15
+    });
+  }
+}
+
+function drawRain() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (const d of drops) {
+    const gradient = ctx.createRadialGradient(
+      d.x - d.r * 0.3,
+      d.y - d.r * 0.3,
+      0,
+      d.x,
+      d.y,
+      d.r
+    );
+
+    gradient.addColorStop(0, `rgba(255,255,255,${d.opacity})`);
+    gradient.addColorStop(0.45, `rgba(150,190,220,${d.opacity * 0.35})`);
+    gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+    ctx.beginPath();
+    ctx.fillStyle = gradient;
+    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    d.y += d.speed;
+
+    if (d.y > canvas.height + d.r) {
+      d.y = -d.r;
+      d.x = Math.random() * canvas.width;
+    }
+  }
+
+  requestAnimationFrame(drawRain);
+}
+
+window.addEventListener("resize", resizeRain);
+
+resizeRain();
+drawRain();
+const input = document.getElementById("url-input");
+
+input.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    navigate();
+  }
+});
+
+function navigate() {
+  let val = input.value.trim();
+
+  if (!val) return;
+
+  let url;
+
+  if (/^https?:\/\//i.test(val)) {
+    url = "/proxy/" + val.replace("://", "/");
+  } else if (/^[\w-]+(\.[a-z]{2,})(\/|$)/i.test(val)) {
+    url = "/proxy/https/" + val;
+  } else {
+    url = "/proxy/https/duckduckgo.com/?q=" + encodeURIComponent(val);
+  }
+
+  window.location.href = url;
+}
+</script>
+</body>
+</html>", "_blank", "noopener,noreferrer");
 
             ntWallpaperBtn.onclick = () => {
                 $("wallpaperUrlInput").value = "";
